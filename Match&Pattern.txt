@@ -1,0 +1,15 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class Main
+{
+    public boolean validation(String number){
+        Pattern p=Pattern.compile("\\d{3}-\\d{3}-\\d{4}");
+        Matcher m=p.matcher(number);
+        return m.matches();
+    }
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+		Main m=new Main();
+		System.out.println(m.validation("752-667-5222"));
+	}
+}

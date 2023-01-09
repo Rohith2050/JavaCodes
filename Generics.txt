@@ -1,0 +1,57 @@
+import java.util.*;
+class Record<E>
+{ 
+  List<E> record=new ArrayList<E>();
+  
+  @Override
+	public String toString() {
+		return "Record [record=" + record + "]";
+	}
+	public void add(E e){
+	    record.add(e);
+	}
+	public void display(Record<? extends Student> record){
+	    System.out.println("Student Record ="+record);
+	} 
+  
+}
+class Student{
+    int id;
+    String name;
+    
+    public Student(int id,String name){
+        this.id=id;
+        this.name=name;
+    }
+    @Override
+    public String toString(){
+        return "Id = "+id+"Name = "+name;
+    }
+}
+class Dayscholar extends Student{
+    float fees;
+    
+    public Dayscholar(int id,String name,float fees){
+        super(id,name);
+        this.fees=fees;
+    }
+    @Override
+    public String toString(){
+        return "Id = "+id+"Name = "+name+"Fees = "+fees;
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+		Record<Student> re=new Record<>();
+		Student stu=new Student(1001,"Adam");
+		re.add(stu);
+		re.display(re);
+		
+		Record<Dayscholar> dy=new Record<>();
+		Dayscholar dsy=new Dayscholar(1002,"Adamproject",55050.2f);
+		dy.add(dsy);
+		dy.display(dy);
+		
+	}
+}

@@ -1,0 +1,87 @@
+import java.util.*;
+class local
+{
+    class pri
+    {
+        private char grade;
+        private char findGrade(String employeeId,int point){
+            if (isEmployee(employeeId)){
+                if (point<100 && point>90){
+                    grade='A';
+                }
+                else if(point<90 && point>80){
+                    grade='B';
+                }else{
+                    grade='C';
+                }
+            }
+            return grade;
+        }
+        private boolean isEmployee(String employeeId){
+            return true;
+        }
+    }
+    
+    public char checkGrade(String employeeId,int point){
+        pri g=new pri();
+        char c=g.findGrade(employeeId,point);
+        return c;
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+		local l=new local();
+		String employeeId="1024AB";
+		int point=95;
+		char x=l.checkGrade(employeeId,point);
+		System.out.println("The Grade for the "+employeeId+" is "+x);
+	}
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+import java.util.*;
+interface Grade{
+    //char grades='A';
+    public char findGrade(String employeeId,int point);
+}
+class Local
+{
+    Grade g=new Grade(){
+        private char grade;
+        public char findGrade(String employeeId,int point)
+        {
+            if(isEmployee(employeeId)){
+                if (point<100 & point>90){
+                    grade='A';
+                }else if (point<90 && point>80){
+                    grade='B';
+                }else{
+                    grade='C';
+                }  
+            }
+            return grade;
+        }
+        
+        private boolean isEmployee(String employeeId){
+            return true;
+        }
+    };
+    public char checkGrade(String employeeId,int point){
+        char c=g.findGrade(employeeId,point);
+        return c;
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+		Local l=new Local();
+		String employeeId="12014WS";
+		int point = 85;
+		char x=l.checkGrade(employeeId,point);
+		System.out.println("The grade for "+employeeId+" is "+x);
+	}
+}

@@ -1,0 +1,46 @@
+import java.util.*;
+class Sort{
+    public static void sortArray(int[] arr,int low,int high){
+        if (low>=high)
+            return;
+        int start=low;
+        int end=high;
+        int mid=(start+end)/2;
+        int pivot=arr[mid];
+        while (start<=end){
+            while(pivot>arr[start]){
+                start++;
+            }while(pivot<arr[end]){
+                end--;
+            }if (start<=end) {
+                int temp=arr[start];
+                arr[start]=arr[end];
+                arr[end]=temp;
+                start++;
+                end--;
+            }  
+        }
+        sortArray(arr,low,end);
+        sortArray(arr,start,end);
+    }
+}
+class Main {
+	
+	public static int[] getMaxMin(int arr[]) { 
+	    //Implement your logic here and change the return statement accordingly
+	    int min=arr[0];
+	    int max=arr[arr.length-1];
+	    int[] x={min,max};
+	    return x;
+	} 
+	  
+	public static void main(String args[]) { 
+	    int arr[] = {1000, 10, 5, 1, 2000};
+	    Sort.sortArray(arr,0,arr.length-1);
+
+	    int[] maxMin = getMaxMin(arr);
+	    
+	      System.out.println("Minimum value is "+ maxMin[1]); 
+	 	  System.out.println("Maximum value is "+ maxMin[0]); 
+	} 
+}
